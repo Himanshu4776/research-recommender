@@ -9,8 +9,5 @@
         <module name="research-recommender" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="research-recommender" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
