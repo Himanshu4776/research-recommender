@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-expression:4.1.8.RELEASE" type="java-imported" external-system-id="Maven">
+    <properties groupId="org.springframework" artifactId="spring-expression" version="4.1.8.RELEASE" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.8.RELEASE/spring-expression-4.1.8.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.8.RELEASE/spring-expression-4.1.8.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.8.RELEASE/spring-expression-4.1.8.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
