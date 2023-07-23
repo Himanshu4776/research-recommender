@@ -1,23 +1,40 @@
 package org.example.Service.Impl;
 
+import com.cloudinary.Cloudinary;
+import org.example.Constants.Constants;
 import org.example.Dao.RecommenderRepository;
 import org.example.Entity.RecommenderEntity;
 import org.example.Service.RecommenderService;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RecommenderServiceImpl implements RecommenderService {
-    @Autowired RecommenderRepository recommenderRepository;
+
+//    @Autowired RecommenderRepository recommenderRepository;
+    private final RecommenderRepository recommenderRepository;
+
+    @Autowired
+    private Constants constants;
+
+    private final Cloudinary cloudinary;
+
+    @Autowired
+    public RecommenderServiceImpl(RecommenderRepository recommenderRepository, Cloudinary cloudinary, Cloudinary cloudinary1) {
+        super();
+        this.recommenderRepository = recommenderRepository;
+//        this.constants = constants;
+        this.cloudinary = cloudinary1;
+    }
 
     @Override
     public RecommenderEntity getById(int userId) {
-        return recommenderRepository.getById(userId);
+        return recommenderRepository.getOne(userId);
     }
 
     @Override
@@ -27,23 +44,44 @@ public class RecommenderServiceImpl implements RecommenderService {
 
     @Override
     public void fetchArticles(String link) throws IOException {
+        Cloudinary cloudinary = new Cloudinary(Cloudinary.asMap(
+        "cloud_name", "dsz4woagj",
+        "api_key", "571261715518268",
+        "api_secret", "0skWi4bPTR5cSSOXu-6m7ilhDRY"));
+    }
+
+    @Override
+    public void runScheduler() throws InterruptedException {
+        Logger.getLogger("logging info").info("right now day is " + LocalDateTime.now().getDayOfWeek());
+
+        Thread.sleep(10000);
+    }
+
+    @Override
+    public void readFile() throws FileNotFoundException {
+//        try (BufferedInputStream in = new BufferedInputStream(new URL(constants.FILE_URL).openStream());
+//             FileOutputStream fileOutputStream = new FileOutputStream("recommender.csv")) {
+//            byte dataBuffer[] = new byte[1024];
+//            int bytesRead;
+//            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+//                fileOutputStream.write(dataBuffer, 0, bytesRead);
+//            }
+//        } catch (IOException e) {
+//            // handle exception
+//            e.printStackTrace();
+//        }
+
+        int r = 0;
         try {
-            link = "https://ieeexplore.ieee.org/xpl/topAccessedArticles.jsp?punumber=6287639";
-
-            Document document =  Jsoup.connect(link).get();
-            Elements articles = document.select(".List-first-container");
-            for (Element article: articles) {
-                Elements linkElement = article.select("a");
-                if(linkElement != null) {
-                    String articleName = linkElement.text();
-                    String articleLink = linkElement.attr("href");
-
-                    System.out.println("name: " + articleName);
-                    System.out.println("link: " + articleLink);
-                }
+            File file = new File("src/main/resources/recommender.csv");
+            FileInputStream fis = new FileInputStream(file);
+            while( (r = fis.read()) != -1) {
+                System.out.println((char) r);
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
