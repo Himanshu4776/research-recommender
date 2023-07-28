@@ -2,15 +2,15 @@ package org.example.utils;
 
 import java.util.*;
 
-import static org.example.Constants.Constants.stopWords;
-import static org.example.Constants.Constants.symbols;
+import static org.example.Constants.Constants.STOP_WORDS;
+import static org.example.Constants.Constants.SYMBOLS;
 
 public class Utils {
 
     public static void extractKeywords(String text) {
 
         // filter all sentence characters
-        for (String symbol : symbols) {
+        for (String symbol : SYMBOLS) {
             if (text.contains(symbol)) {
                 text = text.replace(symbol, " ");
             }
@@ -23,7 +23,7 @@ public class Utils {
         List<String> filteredWords = new ArrayList<>();
 
         for (String word : words) {
-            if (!stopWords.contains(word)) {
+            if (!STOP_WORDS.contains(word)) {
                 filteredWords.add(word);
             }
         }
