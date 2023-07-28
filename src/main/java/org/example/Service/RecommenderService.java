@@ -17,5 +17,5 @@ public interface RecommenderService {
     @Scheduled(fixedDelay = 5000)
     void runScheduler() throws InterruptedException;
 
-    void readFile() throws FileNotFoundException;
+    void readFile() throws Exception;
 }

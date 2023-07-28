@@ -14,12 +14,22 @@ public class RecommenderEntity {
 
     private ArrayList<String> interests;
 
+    private String link;
+
     public int getId() {
         return id;
     }
 
+    public String getLink() {
+        return link;
+    }
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public ArrayList<String> getInterests() {

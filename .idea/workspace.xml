@@ -4,23 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68381f09-49cb-4dfb-b3b0-5584969bca5d" name="Changes" comment="added the">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/CloudinaryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/SchedulerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/recommender.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+    <list default="true" id="68381f09-49cb-4dfb-b3b0-5584969bca5d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Dao/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Entity/UserEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HelloController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/RecommenderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/RecommenderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Dao/RecommenderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Dao/RecommenderRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Entity/RecommenderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Entity/RecommenderEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/Impl/RecommenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/Impl/RecommenderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/RecommenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/RecommenderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +38,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2RgTR424gTzlSMKnqURPUPLk8GG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -127,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687691421131</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed app configs and added cloudinary support.">
+      <created>1690099058086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1690099058086</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +147,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added the project setup and recommender service files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the project setup and recommender service files" />
+    <MESSAGE value="fixed app configs and added cloudinary support." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed app configs and added cloudinary support." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

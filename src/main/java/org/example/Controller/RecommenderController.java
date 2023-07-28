@@ -47,7 +47,7 @@ public class RecommenderController {
     }
 
     @GetMapping("/read")
-    public void getRecommendations() throws FileNotFoundException {
+    public void getRecommendations() throws Exception {
         try {
             recommenderService.readFile();
         } catch (FileNotFoundException e) {

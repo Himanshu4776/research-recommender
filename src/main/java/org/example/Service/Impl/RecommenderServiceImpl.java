@@ -9,9 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
+
+import static org.example.Constants.Constants.COMMA_DELIMITER;
 
 @Service
 public class RecommenderServiceImpl implements RecommenderService {
@@ -58,30 +63,36 @@ public class RecommenderServiceImpl implements RecommenderService {
     }
 
     @Override
-    public void readFile() throws FileNotFoundException {
-//        try (BufferedInputStream in = new BufferedInputStream(new URL(constants.FILE_URL).openStream());
-//             FileOutputStream fileOutputStream = new FileOutputStream("recommender.csv")) {
-//            byte dataBuffer[] = new byte[1024];
-//            int bytesRead;
-//            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
-//                fileOutputStream.write(dataBuffer, 0, bytesRead);
-//            }
-//        } catch (IOException e) {
-//            // handle exception
-//            e.printStackTrace();
-//        }
-
-        int r = 0;
-        try {
-            File file = new File("src/main/resources/recommender.csv");
-            FileInputStream fis = new FileInputStream(file);
-            while( (r = fis.read()) != -1) {
-                System.out.println((char) r);
+    public void readFile() throws Exception {
+        List<List<String>> records = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/recommender.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(COMMA_DELIMITER);
+                records.add(Arrays.asList(values));
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }
+        for (List<String> record : records) {
+            System.out.println("record line is: ");
+            for (String value : record) {
+                System.out.print(value);
+                System.out.println();
+            }
+//            boolean delimiterFound = false;
+//            for (String value : record) {
+//                if(value == ",") {
+//                    delimiterFound = true;
+//                }
+//                if(delimiterFound && value != ",") {
+//
+//                }
+//            }
+            System.out.println();
+            System.out.print(record.size());
+//            break;
         }
     }
 }

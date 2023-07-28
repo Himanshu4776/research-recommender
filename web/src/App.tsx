@@ -1,25 +1,34 @@
-import { useState } from 'react';
-import './index.css';
+import { Home } from "./components/home";
+import NavBar from "./components/navbar/navbar";
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // return <Home />;
   return (
-    <>
-      <div className='bg-red-700'>
-        <h1>React typescript setup complete</h1>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  )
+    <div className="">
+      <NavBar />
+      <div className="py-4 w-full"></div>
+      <Home />
+    </div>
+  );
 }
 
-export default App
+export default App;
+
+{
+  /* <InputBox
+    placeholder="Your username or email"
+    iconType="password"
+    type="text"
+    name="username"
+    id="username"
+    width="36px"
+  /> */
+}
+
+// <Tab
+//   primaryTabName="login"
+//   PrimaryComponent={Login}
+//   secondaryTabName="register"
+//   SecondaryComponent={Register}
+// />
