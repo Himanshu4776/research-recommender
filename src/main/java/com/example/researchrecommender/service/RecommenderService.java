@@ -8,15 +8,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static com.example.researchrecommender.constants.Constants.COMMA_DELIMITER;
 import static com.example.researchrecommender.utils.Utils.extractKeywords;
@@ -28,6 +26,8 @@ public class RecommenderService {
     private final LinksRepository linksRepository;
 
     private final MongoTemplate mongoTemplate;
+
+    private final EmailSenderService emailSenderService;
 
     public void createTopic(String topic, String link) {
         Links links = new Links();
@@ -99,5 +99,13 @@ public class RecommenderService {
                 .topic(links.getTopic())
                 .link(links.getLink())
                 .build();
+    }
+
+    @Scheduled(fixedRate = 5000)
+    public void sendScheduledRecommendations() {
+        log.info("called in {}", new Date().toString());
+        emailSenderService.sendEmail("himanshukr20k@gmail.com",
+                "Test email",
+                "this is a test email to check working");
     }
 }

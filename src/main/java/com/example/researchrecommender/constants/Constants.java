@@ -26,4 +26,6 @@ public final class Constants {
     public static String COMMA_DELIMITER = ",";
 
     public final String FILE_URL = "https://res.cloudinary.com/dsz4woagj/raw/upload/v1689238662/data_po2dzf.csv";
+
+    public static String DEFAULT_EMAIL = "htyagi066@gmail.com";
 }
