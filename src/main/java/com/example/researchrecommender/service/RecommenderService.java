@@ -2,10 +2,12 @@ package com.example.researchrecommender.service;
 
 import com.example.researchrecommender.dto.LinksResponse;
 import com.example.researchrecommender.dto.UpdateLinkRequest;
+import com.example.researchrecommender.dto.UserResponse;
 import com.example.researchrecommender.model.Links;
 import com.example.researchrecommender.repository.LinksRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,7 +29,8 @@ public class RecommenderService {
 
     private final MongoTemplate mongoTemplate;
 
-//    private final EmailSenderService emailSenderService;
+    @Autowired EmailSenderService emailSenderService;
+    @Autowired UserService userService;
 
     public void createTopic(String topic, String link) {
         Links links = new Links();
@@ -101,11 +104,26 @@ public class RecommenderService {
                 .build();
     }
 
-//    @Scheduled(fixedRate = 5000)
-//    public void sendScheduledRecommendations() {
-//        log.info("called in {}", new Date().toString());
-//        emailSenderService.sendEmail("himanshukr20k@gmail.com",
-//                "Test email",
-//                "this is a test email to check working");
-//    }
+    @Scheduled(fixedRate = 5000)
+    public void sendScheduledRecommendations() {
+        log.info("called in {}", new Date().toString());
+
+        List<UserResponse> allusers = userService.getAllUsers();
+        for(UserResponse user : allusers) {
+            List<String> userInterestedTopics = user.getTopics();
+            List<LinksResponse> recommendations = recommendTopics(userInterestedTopics);
+            try {
+                emailSenderService.sendEmail(user.getEmail(),
+                        "weekly Research paper recommendations",
+                        recommendations.toString());
+            } catch (Exception e) {
+                log.error("Error faced in sending recommendations");
+            }
+        }
+    }
+
+    public List<LinksResponse> allLinks() {
+        List<Links> results = linksRepository.findAll();
+        return results.stream().map(this::mapToLinksResponse).toList();
+    }
 }

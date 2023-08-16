@@ -18,13 +18,13 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody UserRequest userRequest) {
+    public void createUser(@RequestBody UserRequest userRequest) {
         userService.createUser(userRequest);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<UserResponse> getProducts() {
+    public List<UserResponse> getAllUsers() {
         return userService.getAllUsers();
     }
 }

@@ -39,4 +39,10 @@ public class RecommenderController {
     public LinksResponse updateTopicsLink(UpdateLinkRequest updateLinkRequest) throws Exception {
         return recommendService.updateTopicsLink(updateLinkRequest);
     }
+
+    @GetMapping("/topics")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LinksResponse> fetchAllTopics() {
+        return recommendService.allLinks();
+    }
 }
