@@ -27,7 +27,7 @@ public class RecommenderService {
 
     private final MongoTemplate mongoTemplate;
 
-    private final EmailSenderService emailSenderService;
+//    private final EmailSenderService emailSenderService;
 
     public void createTopic(String topic, String link) {
         Links links = new Links();
@@ -101,11 +101,11 @@ public class RecommenderService {
                 .build();
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void sendScheduledRecommendations() {
-        log.info("called in {}", new Date().toString());
-        emailSenderService.sendEmail("himanshukr20k@gmail.com",
-                "Test email",
-                "this is a test email to check working");
-    }
+//    @Scheduled(fixedRate = 5000)
+//    public void sendScheduledRecommendations() {
+//        log.info("called in {}", new Date().toString());
+//        emailSenderService.sendEmail("himanshukr20k@gmail.com",
+//                "Test email",
+//                "this is a test email to check working");
+//    }
 }

@@ -14,6 +14,7 @@ import java.util.List;
 public class UserRequest {
     private String id;
     private String name;
+    private String email;
     private String Password;
     private List<String> topics;
 }

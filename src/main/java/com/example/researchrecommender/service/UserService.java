@@ -22,6 +22,7 @@ public class UserService {
         User user = User.builder().name(userRequest.getName())
                 .password(userRequest.getPassword())
                 .topics(userRequest.getTopics())
+                .email(userRequest.getEmail())
                 .build();
 
         userRepository.save(user);
@@ -38,6 +39,7 @@ public class UserService {
         return UserResponse.builder().
                 id(user.getId())
                 .name(user.getName())
+                .email(user.getEmail())
                 .topics(user.getTopics())
                 .build();
     }
@@ -55,6 +57,7 @@ public class UserService {
         }
         return UserResponse.builder().id(userFetched.getId())
                 .name(userFetched.getName())
+                .email(userFetched.getEmail())
                 .topics(userFetched.getTopics())
                 .build();
     }

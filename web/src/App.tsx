@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Home } from "./components/home";
 import NavBar from "./components/navbar/navbar";
 import "./index.css";
+import { Tab } from "./components/tabs";
+import { Login } from "./components/login";
+import { Register } from "./components/register";
+import { Options } from "./components/options";
 
 function App() {
   // return <Home />;
@@ -9,20 +13,27 @@ function App() {
   console.log("submit", password);
 
   return (
+    // <Tab
+    //   primaryTabName="login"
+    //   PrimaryComponent={Login}
+    //   secondaryTabName="register"
+    //   SecondaryComponent={Register}
+    // />
+    <Options />
     // <div className="">
     //   <NavBar />
     //   <div className="py-4 w-full"></div>
     //   <Home />
-    // </div>\
-    <form>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="enter password"
-      />
-      <input type="submit" />
-    </form>
+    // </div>
+    // <form>
+    //   <input
+    //     type="password"
+    //     value={password}
+    //     onChange={(e) => setPassword(e.target.value)}
+    //     placeholder="enter password"
+    //   />
+    //   <input type="submit" />
+    // </form>
   );
 }
 

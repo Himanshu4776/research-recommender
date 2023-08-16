@@ -3,7 +3,7 @@ import { InputBox } from "./Input-box";
 import { useForm } from "react-hook-form";
 
 export function Register() {
-  const { handleSubmit } = useForm();
+  const { handleSubmit, register } = useForm();
 
   function onSubmit() {}
 
@@ -18,6 +18,8 @@ export function Register() {
             name="username"
             id="username"
             width="36px"
+            label=""
+            register={register}
           />
         </div>
         <div className="py-2">
@@ -28,6 +30,8 @@ export function Register() {
             name="email"
             id="email"
             width="36px"
+            label=""
+            register={register}
           />
         </div>
         <div className="py-2">
@@ -38,6 +42,8 @@ export function Register() {
             name="password"
             id="password"
             width="36px"
+            label=""
+            register={register}
           />
         </div>
         <div className="py-2"></div>

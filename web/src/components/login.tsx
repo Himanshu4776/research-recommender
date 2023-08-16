@@ -1,4 +1,9 @@
-import { useForm } from "react-hook-form";
+import {
+  FieldValues,
+  RegisterOptions,
+  UseFormRegisterReturn,
+  useForm,
+} from "react-hook-form";
 import { InputBox } from "./Input-box";
 import { Chrome } from "lucide-react";
 
@@ -20,6 +25,8 @@ export function Login() {
             name="username"
             id="username"
             width="36px"
+            label=""
+            register={register}
           />
         </div>
         <div className="py-2">
@@ -29,7 +36,9 @@ export function Login() {
             type="password"
             name="password"
             id="password"
+            register={register}
             width="36px"
+            label={""}
           />
         </div>
         <div className="py-4"></div>
