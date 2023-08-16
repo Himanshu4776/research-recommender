@@ -126,4 +126,16 @@ public class RecommenderService {
         List<Links> results = linksRepository.findAll();
         return results.stream().map(this::mapToLinksResponse).toList();
     }
+
+    public Set<String> allTopics() {
+        Set<String> allTopicNames = new HashSet<String>();
+        List<Links> results = linksRepository.findAll();
+        for (Links link: results) {
+            if(link.getTopic() != null && !Objects.equals(link.getTopic(), "")) {
+                allTopicNames.add(link.getTopic());
+            }
+        }
+        log.info("All topics fetched");
+        return allTopicNames;
+    }
 }

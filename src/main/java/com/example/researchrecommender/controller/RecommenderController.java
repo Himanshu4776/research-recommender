@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/recommend")
@@ -42,7 +43,7 @@ public class RecommenderController {
 
     @GetMapping("/topics")
     @ResponseStatus(HttpStatus.OK)
-    public List<LinksResponse> fetchAllTopics() {
-        return recommendService.allLinks();
+    public Set<String> fetchAllTopics() {
+        return recommendService.allTopics();
     }
 }

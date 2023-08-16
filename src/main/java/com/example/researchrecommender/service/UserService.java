@@ -1,5 +1,6 @@
 package com.example.researchrecommender.service;
 
+import com.example.researchrecommender.dto.UserLogin;
 import com.example.researchrecommender.dto.UserRequest;
 import com.example.researchrecommender.dto.UserResponse;
 import com.example.researchrecommender.dto.UserUpdateRequest;
@@ -60,5 +61,27 @@ public class UserService {
                 .email(userFetched.getEmail())
                 .topics(userFetched.getTopics())
                 .build();
+    }
+
+    public Boolean userLogin(UserLogin userLogin) {
+        try {
+            User user = userRepository.getByEmailAndPassword(userLogin.getEmail(), userLogin.getPassword());
+            return user != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String updatePassword(UserLogin userLogin) {
+        try {
+            User user = userRepository.getByEmail(userLogin.getEmail());
+            if(user != null) {
+                user.setPassword(userLogin.getPassword());
+                return "SUCCESS";
+            }
+            return "PASSWORD_UPDATE_FAILED";
+        } catch (Exception e) {
+            return "INCORRECT_EMAIL_ENTERED";
+        }
     }
 }
