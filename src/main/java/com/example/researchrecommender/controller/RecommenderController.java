@@ -1,6 +1,7 @@
 package com.example.researchrecommender.controller;
 
 import com.example.researchrecommender.dto.LinksResponse;
+import com.example.researchrecommender.dto.TopicsRequest;
 import com.example.researchrecommender.dto.UpdateLinkRequest;
 import com.example.researchrecommender.service.RecommenderService;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +32,16 @@ public class RecommenderController {
 
     @PostMapping("/topics")
     @ResponseStatus(HttpStatus.OK)
-    public List<LinksResponse> recommendedTopics(List<String> topicsList) {
-        return recommendService.recommendTopics(topicsList);
+    public List<LinksResponse> recommendedTopics(@RequestBody TopicsRequest topicsRequest) {
+//    public List<LinksResponse> recommendedTopics( List<String> topicsList) {
+        System.out.println("see: " + topicsRequest.getTopicsList());
+        return recommendService.recommendTopics(topicsRequest.getTopicsList());
+//        return recommendService.recommendTopics(topicsList);
     }
 
     @PatchMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public LinksResponse updateTopicsLink(UpdateLinkRequest updateLinkRequest) throws Exception {
+    public LinksResponse updateTopicsLink(@RequestBody UpdateLinkRequest updateLinkRequest) throws Exception {
         return recommendService.updateTopicsLink(updateLinkRequest);
     }
 

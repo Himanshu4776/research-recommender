@@ -2,11 +2,12 @@ package com.example.researchrecommender.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserLogin {
-    public String email;
-    public String password;
+public class TopicsRequest {
+    private List<String> topicsList;
 }

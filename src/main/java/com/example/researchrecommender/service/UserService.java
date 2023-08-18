@@ -63,7 +63,7 @@ public class UserService {
                 .build();
     }
 
-    public Boolean userLogin(UserLogin userLogin) {
+    public Boolean userLoginService(UserLogin userLogin) {
         try {
             User user = userRepository.getByEmailAndPassword(userLogin.getEmail(), userLogin.getPassword());
             return user != null;

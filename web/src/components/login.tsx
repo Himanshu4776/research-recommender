@@ -1,17 +1,36 @@
-import {
-  FieldValues,
-  RegisterOptions,
-  UseFormRegisterReturn,
-  useForm,
-} from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { InputBox } from "./Input-box";
 import { Chrome } from "lucide-react";
+import bcrypt from "bcryptjs";
+import { LoginObject, hashedSalt } from "../shared/constant";
+import { UseLogin } from "../hooks/use-login";
+import { useAtom } from "jotai";
+import { baseUrls } from "../shared/base-url";
 
 export function Login() {
   const { handleSubmit, register } = useForm();
+  const [baseUrl] = useAtom(baseUrls);
 
-  function onSubmit() {
-    // const submitData = {};
+  function onSubmit(data: FieldValues) {
+    const hasedPassword = bcrypt.hashSync(data["password"], hashedSalt);
+    const submitData: LoginObject = {
+      email: data["email"],
+      password: hasedPassword,
+    };
+
+    UseLogin(
+      submitData,
+      baseUrl,
+      (response: boolean) => {
+        console.log("response", response);
+        if (response === true) {
+          localStorage.setItem("email", data["email"]);
+        }
+      },
+      (err: string) => {
+        console.log("error", err);
+      }
+    );
   }
 
   return (
@@ -19,11 +38,11 @@ export function Login() {
       <div className="font-nunito flex flex-col mx-4">
         <div className="py-2 ">
           <InputBox
-            placeholder="Your username or email"
-            iconType="username"
-            type="text"
-            name="username"
-            id="username"
+            placeholder="Your email"
+            iconType="email"
+            type="email"
+            name="email"
+            id="email"
             width="36px"
             label=""
             register={register}
