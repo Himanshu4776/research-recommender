@@ -7,6 +7,7 @@ import { useAtom } from "jotai";
 import { Tab } from "./components/tabs";
 import { Login } from "./components/login";
 import { Register } from "./components/register";
+import { Options } from "./components/options";
 
 // SALT should be created ONE TIME upon sign up
 const salt = bcrypt.genSaltSync(10);
@@ -55,12 +56,13 @@ function App() {
   // }
 
   return (
-    <Tab
-      primaryTabName="login"
-      PrimaryComponent={Login}
-      secondaryTabName="register"
-      SecondaryComponent={Register}
-    />
+    <Options />
+    // <Tab
+    //   primaryTabName="login"
+    //   PrimaryComponent={Login}
+    //   secondaryTabName="register"
+    //   SecondaryComponent={Register}
+    // />
     // <form>
     //   <input
     //     style={{ padding: "15px", borderRadius: "10px", margin: "10px" }}
@@ -114,7 +116,9 @@ export default App;
 //   secondaryTabName="register"
 //   SecondaryComponent={Register}
 // />
-// <Options />
+{
+  /* <Options /> */
+}
 // <div className="">
 //   <NavBar />
 //   <div className="py-4 w-full"></div>

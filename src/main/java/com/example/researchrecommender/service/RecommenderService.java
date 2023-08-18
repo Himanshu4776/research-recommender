@@ -90,8 +90,11 @@ public class RecommenderService {
         for (String topic : topicsList) {
             Query query = new Query();
             query.addCriteria(Criteria.where("topic").is(topic));
-            results = mongoTemplate.find(query, Links.class);
+            List<Links> result = mongoTemplate.find(query, Links.class);
 
+            for (Links eachResult : result) {
+                results.add(eachResult);
+            }
         }
         log.info("List recommend topics have successfully fetched");
         return results.stream().map(this::mapToLinksResponse).toList();
