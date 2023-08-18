@@ -4,6 +4,9 @@ import com.example.researchrecommender.dto.UserLogin;
 import com.example.researchrecommender.dto.UserRequest;
 import com.example.researchrecommender.dto.UserResponse;
 import com.example.researchrecommender.service.UserService;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://127.0.0.1:5173/")
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -31,13 +35,13 @@ public class UserController {
 
     @PostMapping("/passwordReset")
     @ResponseStatus(HttpStatus.CREATED)
-    public String PasswordReset(UserLogin userUpdate) {
+    public String PasswordReset(@RequestBody UserLogin userUpdate) {
         return userService.updatePassword(userUpdate);
     }
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public boolean Login(UserLogin userLogin) {
-        return userService.userLogin(userLogin);
+    public boolean Login(@RequestBody UserLogin userLogin) {
+        return userService.userLoginService(userLogin);
     }
 }

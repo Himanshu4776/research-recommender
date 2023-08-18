@@ -104,23 +104,23 @@ public class RecommenderService {
                 .build();
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void sendScheduledRecommendations() {
-        log.info("called in {}", new Date().toString());
-
-        List<UserResponse> allusers = userService.getAllUsers();
-        for(UserResponse user : allusers) {
-            List<String> userInterestedTopics = user.getTopics();
-            List<LinksResponse> recommendations = recommendTopics(userInterestedTopics);
-            try {
-                emailSenderService.sendEmail(user.getEmail(),
-                        "weekly Research paper recommendations",
-                        recommendations.toString());
-            } catch (Exception e) {
-                log.error("Error faced in sending recommendations");
-            }
-        }
-    }
+//    @Scheduled(fixedRate = 5000)
+//    public void sendScheduledRecommendations() {
+//        log.info("called in {}", new Date().toString());
+//
+//        List<UserResponse> allusers = userService.getAllUsers();
+//        for(UserResponse user : allusers) {
+//            List<String> userInterestedTopics = user.getTopics();
+//            List<LinksResponse> recommendations = recommendTopics(userInterestedTopics);
+//            try {
+//                emailSenderService.sendEmail(user.getEmail(),
+//                        "weekly Research paper recommendations",
+//                        recommendations.toString());
+//            } catch (Exception e) {
+//                log.error("Error faced in sending recommendations");
+//            }
+//        }
+//    }
 
     public List<LinksResponse> allLinks() {
         List<Links> results = linksRepository.findAll();

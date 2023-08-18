@@ -1,18 +1,45 @@
 import { Chrome } from "lucide-react";
 import { InputBox } from "./Input-box";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
+import { baseUrls } from "../shared/base-url";
+import { useAtom } from "jotai";
+import bcrypt from "bcryptjs";
+import { RegisterObject, hashedSalt } from "../shared/constant";
+import { UseRegister } from "../hooks/use-register";
 
 export function Register() {
   const { handleSubmit, register } = useForm();
+  const [baseUrl] = useAtom(baseUrls);
 
-  function onSubmit() {}
+  function onSubmit(data: FieldValues) {
+    const hasedPassword = bcrypt.hashSync(data["password"], hashedSalt);
+    const submitData: RegisterObject = {
+      name: data["username"],
+      email: data["email"],
+      password: hasedPassword,
+    };
+
+    UseRegister(
+      submitData,
+      baseUrl,
+      (response: boolean) => {
+        console.log("response", response);
+        if (response === true) {
+          localStorage.setItem("email", data["email"]);
+        }
+      },
+      (err: string) => {
+        console.log("error", err);
+      }
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="font-nunito flex flex-col mx-4">
         <div className="py-2">
           <InputBox
-            placeholder="Your username or email"
+            placeholder="Your name"
             iconType="username"
             type="text"
             name="username"
@@ -24,7 +51,7 @@ export function Register() {
         </div>
         <div className="py-2">
           <InputBox
-            placeholder="Email"
+            placeholder="Your Email"
             iconType="email"
             type="email"
             name="email"

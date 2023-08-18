@@ -31,13 +31,13 @@ public class RecommenderController {
 
     @PostMapping("/topics")
     @ResponseStatus(HttpStatus.OK)
-    public List<LinksResponse> recommendedTopics(List<String> topicsList) {
+    public List<LinksResponse> recommendedTopics(@RequestBody List<String> topicsList) {
         return recommendService.recommendTopics(topicsList);
     }
 
     @PatchMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public LinksResponse updateTopicsLink(UpdateLinkRequest updateLinkRequest) throws Exception {
+    public LinksResponse updateTopicsLink(@RequestBody UpdateLinkRequest updateLinkRequest) throws Exception {
         return recommendService.updateTopicsLink(updateLinkRequest);
     }
 
