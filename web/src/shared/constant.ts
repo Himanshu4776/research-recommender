@@ -11,3 +11,10 @@ export interface RegisterObject {
   email: string;
   password: string;
 }
+
+export interface CheckBoxItem {
+  id: string;
+  label: string;
+  name: string;
+  disabled: boolean;
+}

@@ -23,7 +23,6 @@ export function CheckBox(props: CheckBoxProps) {
     name,
     disabled,
     errorMessage,
-    onChange,
     ...rest
   } = props;
   return (
