@@ -3,13 +3,11 @@ import { FieldValues, useForm } from "react-hook-form";
 import { CheckBox } from "./checkbox";
 import { useFetchTopics } from "../hooks/use-fetch-topics";
 import Modal from "./modal/modal";
-import React from "react";
+import { CheckBoxItem } from "../shared/constant";
 
 export function Options() {
   const [selectedData, setSelectedData] = useState<number[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const modifiedData = useFetchTopics();
 
   const { register, handleSubmit } = useForm();
 
@@ -20,6 +18,11 @@ export function Options() {
   function closeModal() {
     setIsModalOpen(false);
   }
+
+  const [modifiedData, setModifiedData] = useState<CheckBoxItem[]>([]);
+  useFetchTopics((response: CheckBoxItem[]) => {
+    setModifiedData(response);
+  });
 
   function checkboxHandler(e: any) {
     let isSelected = e.target.checked;
@@ -40,17 +43,24 @@ export function Options() {
     console.log("selectedData", selectedData);
     if (selectedData.length > 0) {
       // continue submitting
+      if (localStorage.getItem("topics") === null) {
+        // register the user
+      } else {
+        // update the topics
+      }
+    } else {
+      openModal();
     }
-
-    openModal();
-    console.log("data: ", data);
   }
 
   return (
     <>
       <form onSubmit={handleSubmit(onsubmit)}>
-        <div className="bg-blue-100 min-h-screen flex flex-col justify-between">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-around flex-row gap-2">
+        <div className="p-4 text-center text-red-500 decoration-4 leading-8 text-3xl">
+          <h1>Select your faviourite topics for Research 🧑‍💻</h1>
+        </div>
+        <div className=" min-h-screen h-full grid grid-cols-6 justify-between">
+          <div className="absolute transform grid grid-cols-7 gap-4 max-w-full w-full ">
             {modifiedData.map((item, index) => (
               <CheckBox
                 key={index}
@@ -66,18 +76,24 @@ export function Options() {
               />
             ))}
           </div>
-          <button
-            type="submit"
-            className="font-nunito px-7 py-2 bg-checkedColor rounded-sm text-white absolute bottom-4 right-4"
-          >
-            submit
-          </button>
         </div>
+        <button
+          type="submit"
+          className="font-nunito px-7 py-2 bg-checkedColor rounded-sm text-white fixed bottom-4 right-4"
+        >
+          submit
+        </button>
       </form>
-      <div className="h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <h2 className="text-lg font-semibold mb-2">Modal Content</h2>
-          <p>This is the content of the modal.</p>
+          <img
+            src="../../public/404-error.png"
+            alt=""
+            height="240px"
+            width="240px"
+          />
+          <h2 className="text-lg font-semibold mb-2">Select Topics first</h2>
+          <p>Please select topics before submit.</p>
         </Modal>
       </div>
     </>
@@ -85,3 +101,5 @@ export function Options() {
 }
 
 // make login function return the selected topics and user name
+
+// starting fix

@@ -17,6 +17,7 @@ export function Register() {
       name: data["username"],
       email: data["email"],
       password: hasedPassword,
+      topics: [],
     };
 
     UseRegister(

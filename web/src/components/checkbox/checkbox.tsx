@@ -26,18 +26,14 @@ export function CheckBox(props: CheckBoxProps) {
     ...rest
   } = props;
   return (
-    <div className="h-auto relative ">
+    <div className="h-auto relative w-fit">
       <input
         id={id}
         type="checkbox"
         className={`appearance-none absolute h-full w-full rounded-[20px] outline-none shadow-black border-solid border-4
-         pt-10 border-transparent shadow-md cursor-pointer bg-checkedColor ${
-           disabled
-             ? "bg-slate-300"
-             : isChecked
-             ? "bg-checkedColor"
-             : "bg-white"
-         }`}
+     pt-10 border-transparent shadow-md cursor-pointer bg-checkedColor ${
+       disabled ? "bg-slate-300" : isChecked ? "bg-checkedColor" : "bg-white"
+     }`}
         {...register(name || "")}
         disabled={disabled}
         {...rest}
@@ -66,4 +62,4 @@ export function CheckBox(props: CheckBoxProps) {
     </div>
   );
 }
-//change starts
+//change start and end

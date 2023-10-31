@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68381f09-49cb-4dfb-b3b0-5584969bca5d" name="Changes" comment="fixed app configs and added cloudinary support.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/researchrecommender/dto/TopicsRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/researchrecommender/controller/RecommenderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/researchrecommender/controller/RecommenderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/researchrecommender/service/RecommenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/researchrecommender/service/RecommenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/checkbox/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/checkbox/checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/modal/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/modal/modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/options.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/options.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/hooks/use-fetch-topics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/hooks/use-fetch-topics.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/shared/constant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/shared/constant.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +56,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "web-components",
-    "last_opened_file_path": "D:/workspace/research-recommender",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/pc/exams/java-maven/java-maven-starter-kit",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",

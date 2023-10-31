@@ -10,6 +10,7 @@ export interface RegisterObject {
   name: string;
   email: string;
   password: string;
+  topics: string[];
 }
 
 export interface CheckBoxItem {
